@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Salami</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <style>
+    </style>
+    <body>
+        <h1>Salami</h1>
+        <label class="switch">
+            Relay 1 <input type="checkbox" id="toggleCheck" onclick="toggle(this, 0)" 
+                           {% if on[0] == 1 %} checked {% endif %} >
+            <span class="slider round"></span>
+        </label>
+ 
+        <script>
+            function toggle(checkbox, number) {
+                if (checkbox.checked == true) {
+                    fetch('/on/' + number, { method: 'POST' })
+                } else {
+                    fetch('/off/' + number, { method: 'POST' })
+                }
+            }
+        </script>
+    </body>
+</html>
